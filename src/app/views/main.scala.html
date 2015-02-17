@@ -1,15 +1,101 @@
-@(title: String)(content: Html)
-
 <!DOCTYPE html>
-
 <html>
-    <head>
-        <title>@title</title>
-        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
-        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
-        <script src="@routes.Assets.at("javascripts/hello.js")" type="text/javascript"></script>
-    </head>
-    <body>
-        @content
-    </body>
+<head>
+<style>
+#border 
+{
+    width: 25%;
+	height: 400px;
+    padding: 25px;
+    border: 25px solid green;
+    margin: 0 auto;
+}
+#navlist {
+    position: relative;
+}
+#navlist li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    top: 100px;
+}
+#navlist li, #navlist a {
+    height: 44px;
+    display: block;
+}
+
+#login {
+    left: 60px;
+    width: 46px;
+    background: url(/assets/images/login.png) 0 0;
+}
+
+#add {
+	left: 185px;
+    width: 43px;
+    background: url(/assets/images/add.png) -47px 0;
+}
+
+#update {
+    right: 60px;
+    width: 43px;
+    background: url(/assets/images/update.png) -91px 0;
+}
+h1.intro {
+    color: green;
+    text-align: center;
+}
+
+.w350{
+	width:350px;
+}
+
+.fltL{
+	float: left;
+}
+.mgL10{
+	margin-left: 10px;
+}
+.mgT10{
+	margin-top: 10px;
+}
+.mgT30{
+	margin-top: 30px;
+}
+.clrB{
+	clear: both;
+	white-space:pre;
+}
+.textCenter{
+	   text-align: center;
+}
+</style>
+
+</head>
+<body>
+
+	<div id="border">
+		<h1 class="intro">
+			Top 
+				<img src="shopping-cart-dollar.png" alt="logo" style="width:60px;height:60px">
+			Deals
+		</h1>
+		<input class="mgT10 mgL10 w350 fltL" type="text" name="itemName" value ="">
+		<img class="mgT10 mgL10 fltL" src="/assets/images/search.png" alt="search" width="23" height="23"/>
+
+		<div class="clrB mgT30">
+			Search By Zipcode
+		</div>
+		<input class="mgT10 mgL10 w350 fltL" type="text" name="zipCode" value ="">
+		<img class="mgT10 mgL10 fltL" src="/assets/images/search.png" alt="search" width="23" height="23"/>
+		
+		<ul id="navlist" class="clrB">
+			<li id="login"><a href="default.asp"></a></li>
+			<li id="add"><a href="css_intro.asp"></a></li>
+			<li id="update"><a href="css_syntax.asp"></a></li>
+		</ul>
+	</div>
+
+</body>
 </html>
