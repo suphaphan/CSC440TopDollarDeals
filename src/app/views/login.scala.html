@@ -1,82 +1,6 @@
 @(form: Form[User])
 
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-#border
-{
-    width: 25%;
-  height: 400px;
-    padding: 25px;
-    border: 25px solid green;
-    margin: 0 auto;
-}
-#navlist {
-    position: relative;
-}
-#navlist li {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    position: absolute;
-    top: 100px;
-}
-#navlist li, #navlist a {
-    height: 44px;
-    display: block;
-}
-
-#login {
-    left: 60px;
-    width: 46px;
-    background: url(assets/images/login.png) 0 0;
-}
-
-#add {
-  left: 185px;
-    width: 43px;
-    background: url(assets/images/add.png) -47px 0;
-}
-
-#update {
-    right: 60px;
-    width: 43px;
-    background: url(assets/images/update.png) -91px 0;
-}
-h1.intro {
-    color: green;
-    text-align: center;
-}
-
-.w350{
-  width:350px;
-}
-
-.fltL{
-  float: left;
-}
-.mgL10{
-  margin-left: 10px;
-}
-.mgT10{
-  margin-top: 10px;
-}
-.mgT30{
-  margin-top: 30px;
-}
-.clrB{
-  clear: both;
-  white-space:pre;
-}
-.textCenter{
-     text-align: center;
-}
-</style>
-
-</head>
-<body>
-  <div id="border">
+@before_partial()
 
 @helper.form(routes.Application.authenticate) {
    <h1>Login</h1>
@@ -108,7 +32,5 @@ h1.intro {
        <button type="submit">Register</button>
    </p>
 }
-  </div>
-</body>
 
-</html>
+@after_partial()
