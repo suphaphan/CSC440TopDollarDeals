@@ -1,4 +1,4 @@
-@(form: Form[User])
+@(login_form: Form[User], register_form: Form[User])
 
 @before_partial()
 
@@ -6,10 +6,13 @@
    <h1>Login</h1>
 
    <p>
-       <input type="email" name="email" placeholder="Email">
+       <input type="email" name="email" placeholder="Email" value="@login_form("email").value">
    </p>
    <p>
        <input type="password" name="password" placeholder="Password">
+   </p>
+   <p style="display: none;">
+       <input type="text" name="zip" placeholder="Zip" value="0">
    </p>
    <p>
        <button type="submit">Login</button>
@@ -20,13 +23,13 @@
    <h1>Register</h1>
 
    <p>
-       <input type="email" name="email" placeholder="Email">
+       <input type="email" name="email" placeholder="Email" value="@register_form("email").value">
    </p>
    <p>
        <input type="password" name="password" placeholder="Password">
    </p>
    <p>
-       <input type="text" name="zip" placeholder="Zip">
+       <input type="text" name="zip" placeholder="Zip" value="@register_form("zip").value">
    </p>
    <p>
        <button type="submit">Register</button>
