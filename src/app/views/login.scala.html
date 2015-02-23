@@ -3,7 +3,7 @@
 @before_partial()
 
 @helper.form(routes.Application.authenticate) {
-   <h1>Login</h1>
+   <h1 class="intro">Login</h1>
 
    <p>
        <input type="email" name="email" placeholder="Email" value="@login_form("email").value">
@@ -20,7 +20,7 @@
 }
 
 @helper.form(routes.Application.register) {
-   <h1>Register</h1>
+   <h1 class="intro">Register</h1>
 
    <p>
        <input type="email" name="email" placeholder="Email" value="@register_form("email").value">
