@@ -1,0 +1,25 @@
+@(user_form: Form[User])
+
+@before_partial()
+
+@helper.form(routes.Application.authenticate) {
+   <h1 class="intro">User Profile</h1>
+
+   <p>
+       <input type="email" name="email" placeholder="Email" value="@user_form("email").value">
+   </p>
+   <p>
+       <input type="password" name="password" placeholder="Password">
+   </p>
+   <p style="display: none;">
+       <input type="text" name="zip" placeholder="Zip" value="0">
+   </p>
+   <p>
+       <button type="submit">Delete Account</button>
+	   <button type="submit">Update</button>
+   </p>
+}
+
+<img class="mgT10" align="center" src="assets/images/home.png" alt="home" width="43" height="43"/>
+
+@after_partial()
