@@ -20,11 +20,13 @@ public class User extends Model {
 
     @Constraints.Required
     public String password;
+    public String name;
 
     @Constraints.Required
     public Long zip;
 
-    public User(String email, String password, Long zip) {
+    public User(String email, String password, Long zip, String name) {
+      this.name = name;
       this.email = email;
       this.password = password;
       this.zip = zip;
@@ -49,4 +51,8 @@ public class User extends Model {
     public void changePassword(String newPassword) {
       password = BCrypt.hashpw(newPassword, BCrypt.gensalt());
     }
+    
+    public void changeName(String newName) {
+        name = newName;
+      }
 }

@@ -67,6 +67,26 @@ public class Application extends Controller {
 
         return doLogin(data);
     }
+    
+    /*this is called then user hit update button*/
+    public static Result updateUser(){
+    	User existingUser = null;
+    	 /* Get data from HTML form. */
+        Form<User> data = Form.form(User.class).bindFromRequest();
+
+        /* Error checking. */
+        if (data.hasErrors())
+            return badRequest(login.render(Form.form(User.class), data));
+
+        /* Get data from form. */
+        existingUser = data.get();
+        
+        /* Change user password and save to database. */
+        existingUser.changePassword(existingUser.password);
+        existingUser.changeName(existingUser.name);
+        existingUser.save();
+		return user();    	
+    }
 
     public static Result logout() {
         session().clear();

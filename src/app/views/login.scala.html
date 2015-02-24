@@ -5,16 +5,15 @@
 @helper.form(routes.Application.authenticate) {
    <h1 class="intro">Login</h1>
 
-   <p>
+   <p class="textCenter">
        <input type="email" name="email" placeholder="Email" value="@login_form("email").value">
    </p>
-   <p>
+   <p class="textCenter">
        <input type="password" name="password" placeholder="Password">
-   </p>
-   <p style="display: none;">
+   <p class="textCenter" style="display: none;">
        <input type="text" name="zip" placeholder="Zip" value="0">
    </p>
-   <p>
+   <p class="textCenter">
        <button type="submit">Login</button>
    </p>
 }
@@ -22,16 +21,19 @@
 @helper.form(routes.Application.register) {
    <h1 class="intro">Register</h1>
 
+	<p class="textCenter">
+       <input type="text" name="name" placeholder="name" value="@register_form("name").value">
+   <p class="textCenter">
    <p>
        <input type="email" name="email" placeholder="Email" value="@register_form("email").value">
    </p>
-   <p>
+   <p class="textCenter">
        <input type="password" name="password" placeholder="Password">
    </p>
-   <p>
+   <p class="textCenter">
        <input type="text" name="zip" placeholder="Zip" value="@register_form("zip").value">
    </p>
-   <p>
+   <p class="textCenter">
        <button type="submit">Register</button>
    </p>
 }
