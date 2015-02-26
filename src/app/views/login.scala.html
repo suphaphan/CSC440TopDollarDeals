@@ -21,10 +21,10 @@
 @helper.form(routes.Application.register) {
    <h1 class="intro">Register</h1>
 
-	<p class="textCenter">
-       <input type="text" name="name" placeholder="name" value="@register_form("name").value">
    <p class="textCenter">
-   <p>
+      <input type="text" name="name" placeholder="name" value="@register_form("name").value">
+   </p>
+   <p class="textCenter">
        <input type="email" name="email" placeholder="Email" value="@register_form("email").value">
    </p>
    <p class="textCenter">
