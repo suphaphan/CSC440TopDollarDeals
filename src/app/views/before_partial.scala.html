@@ -33,6 +33,12 @@
     background: url(assets/images/login.png) 0 0;
 }
 
+#logout {
+    left: 60px;
+    width: 46px;
+    background: url(assets/images/logout.png) 0 0;
+}
+
 #add {
   left: 185px;
     width: 43px;
@@ -44,6 +50,11 @@
     width: 43px;
     background: url(assets/images/update.png) -91px 0;
 }
+
+#login_status {
+    color: red;
+}
+
 h1.intro {
     color: green;
     text-align: center;
@@ -77,3 +88,4 @@ h1.intro {
 </head>
 <body>
   <div id="border">
+    <p class="textCenter" id="login_status">@flash.get("login_status")</p>
