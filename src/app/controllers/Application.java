@@ -1,18 +1,35 @@
 package controllers;
 
-import play.*;
 import play.mvc.*;
 import play.data.*;
 
 import views.html.*;
 import models.*;
 
+/**
+ * Application 
+ * Where all the actions happen
+ * @author Group 5
+ *
+ */
 public class Application extends Controller {
 
+	/**
+	 * index
+	 * default render homepage
+	 * @return result
+	 */
     public static Result index() {
         return ok(index.render());
     }
 
+    /**
+     * login
+     * if user email is null or empty then stay at login/register page
+     * with error message
+     * else login successful then redirect to homepage
+     * @return result
+     */
     public static Result login() {
         if (session("user_email") == null)
             return ok(login.render(Form.form(User.class), Form.form(User.class)));
@@ -20,6 +37,12 @@ public class Application extends Controller {
             return redirect(routes.Application.index());
     }
 
+    /**
+     * doLogin
+     * where we validate inputs for login
+     * @param data 
+     * @return result of user
+     */
     public static Result doLogin(Form<User> data) {
         User potentialUser = data.get();
         User user = User.find.byId(potentialUser.email);
@@ -42,6 +65,11 @@ public class Application extends Controller {
         return redirect(routes.Application.user());
     }
 
+    /**
+     * authenticate
+     * where we check bad input from login_form
+     * @return result
+     */
     public static Result authenticate() {
         Form<User> data = Form.form(User.class).bindFromRequest();
 
@@ -53,10 +81,13 @@ public class Application extends Controller {
         }
     }
 
-    /* This is called for registering users. */
+    /**
+     * register
+     * This is called when user registers.
+     * @return result
+     */
     public static Result register() {
         User newUser = null;
-        User existingUser = null;
 
         /* Get data from HTML form. */
         Form<User> data = Form.form(User.class).bindFromRequest();
@@ -85,7 +116,11 @@ public class Application extends Controller {
         return doLogin(data);
     }
 
-    /*this is called then user hit update button*/
+    /**
+     * updateUser
+     * this is called then user hit update button
+     * @return result
+     */
     public static Result updateUser(){
     	User existingUser = null;
     	 /* Get data from HTML form. */
@@ -105,11 +140,21 @@ public class Application extends Controller {
 		return user();
     }
 
+    /**
+     * logout
+     * user logout of the system
+     * @return result
+     */
     public static Result logout() {
         session().clear();
         return redirect(routes.Application.index());
     }
 
+    /**
+     * user
+     * render user profile
+     * @return result
+     */
     public static Result user() {
         return ok(user.render(Form.form(User.class)));
     }

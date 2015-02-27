@@ -5,7 +5,6 @@ import java.util.regex.Pattern;
 import javax.persistence.*;
 import play.data.validation.*;
 import play.db.ebean.*;
-import com.avaje.ebean.*;
 
 @Entity
 public class Item extends Model {
@@ -28,4 +27,6 @@ public class Item extends Model {
     public static Finder<Integer,Item> find = new Finder<Integer,Item>(
         Integer.class, Item.class
     );
+    
+    /*hold for next phase to be implemented*/
 }

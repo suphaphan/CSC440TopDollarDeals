@@ -5,10 +5,14 @@ import java.util.regex.Pattern;
 import javax.persistence.*;
 import play.data.validation.*;
 import play.db.ebean.*;
-import com.avaje.ebean.*;
 
 import controllers.BCrypt;
 
+/**
+ * User
+ * @author Group 5
+ *
+ */
 @Entity
 public class User extends Model {
     /* Email regex from http://www.mkyong.com/regular-expressions/how-to-validate-email-address-with-regular-expression/ */
@@ -20,11 +24,21 @@ public class User extends Model {
 
     @Constraints.Required
     public String password;
+    
+    @Constraints.Required
     public String name;
 
     @Constraints.Required
     public Long zip;
 
+    /**
+     * User
+     * Constructor
+     * @param email
+     * @param password
+     * @param zip
+     * @param name
+     */
     public User(String email, String password, Long zip, String name) {
       this.name = name;
       this.email = email;
@@ -32,26 +46,47 @@ public class User extends Model {
       this.zip = zip;
     }
 
-    public static Finder<String,User> find = new Finder<String,User>(
-        String.class, User.class
-    );
+   
+    public static Finder<String,User> find = new Finder<String,User>(String.class, User.class);
 
+    /**
+     * validate
+     * validate email for user
+     * @return msg
+     */
     public String validate() {
       Matcher validEmail = EMAIL_PATTERN.matcher(email);
-      if (!validEmail.matches())
-        return "Email specified is not a valid email.";
-      else
-        return null;
+      String msg = null;
+      if (!validEmail.matches()){
+        msg = "Email specified is not a valid email.";
+      }
+      return msg;
     }
 
+    /**
+     * isPassowrd
+     * where we check user's password
+     * @param potentialPassword
+     * @return boolean
+     */
     public boolean isPassword(String potentialPassword) {
       return BCrypt.checkpw(potentialPassword, password);
     }
 
+    /**
+     * changePassword
+     * when user click update button, save the password
+     * @param newPassword
+     */
     public void changePassword(String newPassword) {
       password = BCrypt.hashpw(newPassword, BCrypt.gensalt());
     }
     
+    /**
+     * changeName
+     * when user click update button, save the name
+     * @param newName
+     */
     public void changeName(String newName) {
         name = newName;
       }

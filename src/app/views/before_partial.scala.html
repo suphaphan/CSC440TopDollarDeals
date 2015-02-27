@@ -7,7 +7,6 @@
 #border
 {
     width: 	400px;
-	height: 400px;
     padding: 25px;
     border: 25px solid green;
     margin: 0 auto;
@@ -20,7 +19,7 @@
     padding: 0;
     list-style: none;
     position: absolute;
-    top: 100px;
+    top: 10px;
 }
 #navlist li, #navlist a {
     height: 44px;
@@ -60,6 +59,15 @@ h1.intro {
     text-align: center;
 }
 
+h1.title {
+    text-align: center;
+}
+
+h3.intro {
+    color: green;
+    text-align: center;
+}
+
 .w350{
   width:350px;
 }
@@ -76,6 +84,9 @@ h1.intro {
 .mgT30{
   margin-top: 30px;
 }
+.mgT50{
+  margin-top: 50px;
+}
 .clrB{
   clear: both;
   white-space:pre;
@@ -89,3 +100,9 @@ h1.intro {
 <body>
   <div id="border">
     <p class="textCenter" id="login_status">@flash.get("login_status")</p>
+    
+    <h1 class="intro">
+		Top
+			<img src="assets/images/shopping-cart-dollar.png" alt="logo" style="width:60px;height:60px">
+		Deals
+	</h1>
