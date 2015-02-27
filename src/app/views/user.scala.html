@@ -2,31 +2,36 @@
 
 @before_partial()
 
-@helper.form(routes.Application.user) {
-   <h1 class="title">User Profile</h1>
+@if(!session.containsKey("user_email")) {
 
-   <p class="textCenter">
-       <input type="text" name="name" placeholder="name" value="@user_form("name").value">
-   </p>
-   <p class="textCenter">
-       <input type="email" name="email" placeholder="Email" value="@user_form("email").value" disabled="true">
-   </p>
-   <p class="textCenter">
-       <input type="password" name="password" placeholder="Password">
-   </p>
-   <p class="textCenter" style="display: none;">
-       <input type="text" name="zip" placeholder="Zip" value="0">
-   </p>
-   <p class="textCenter">
-       <button type="submit" name="deleteUser">Delete Account</button>
-      
-	   <button type="submit" name="updateUser">Update</button>
-   </p>
-   <p class="textCenter">
-   		<a href="home"><img class="mgT10" src="assets/images/home.png" alt="home" width="43" height="43"/></a>
-   </p>
+	@helper.form(routes.Application.user) {
+	   <h1 class="title">User Profile</h1>
+		<!-- name, email, and zip should auto populate here -->
+	   <p class="textCenter">
+	       <input type="text" name="name" placeholder="name" value="@user_form("name").value">
+	   </p>
+	   <p class="textCenter">
+	       <input type="email" name="email" placeholder="Email" value="@user_form("email").value" disabled="true">
+	   </p>
+	   <p class="textCenter">
+	       <input type="password" name="password" placeholder="Password">
+	   </p>
+	   <p class="textCenter" style="display: none;">
+	       <input type="text" name="zip" placeholder="Zip" value="0">
+	   </p>
+	   <p class="textCenter">
+	       <button type="submit" name="deleteUser">Delete Account</button>
+	      
+		   <button type="submit" name="updateUser">Update</button>
+	   </p>
+	   <p class="textCenter">
+	   		<a href="home"><img class="mgT10" src="assets/images/home.png" alt="home" width="43" height="43"/></a>
+	   </p>
+	}
+} else {
+
+	<!-- Unregistered user can't see this page -->
 }
-
 
 
 @after_partial()
