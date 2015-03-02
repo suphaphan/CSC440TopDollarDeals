@@ -20,16 +20,13 @@
 
 		<ul id="navlist" class="clrB">
 		@if(session.containsKey("user_email")) {
-			<li id="add"><a href="addItem"></a></li>
+			<li id="logout"><a href="logout"></a></li>
+			<li id="add"><a href="addItem"></a></li>			
+			<li id="update"><a href="user"></a></li>
 		} else {
 			<li id="login"><a href="login"></a></li>
-		}
-		</ul>
-
-		<ul id="navlist" class="clrB">
-		@if(session.containsKey("user_email")) {
-			<li id="logout"><a href="logout"></a></li>
-			<li id="update"><a href="user"></a></li>
+			<li id="coupon"><a href="coupon"></a></li>			
+			<li id="info"><a href="info"></a></li>
 		}
 		</ul>
 

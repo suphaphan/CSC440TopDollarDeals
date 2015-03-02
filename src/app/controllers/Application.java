@@ -148,6 +148,8 @@ public class Application extends Controller {
         session("user_email", existingUser.email);
         session("user_name", existingUser.name);
 
+        /* Display success to user that their profile has been updated. */
+        flash("update_status", "Successfully udpated!");
 		return redirect(routes.Application.user());
     }
 

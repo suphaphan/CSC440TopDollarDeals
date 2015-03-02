@@ -27,7 +27,7 @@
 }
 
 #login {
-    left: 165px;
+    left: 60px;
     width: 46px;
     background: url(assets/images/login.png) 0 0;
 }
@@ -50,7 +50,21 @@
     background: url(assets/images/update.png) -91px 0;
 }
 
-#login_status {
+
+#coupon {
+    right: 180px;
+    width: 43px;
+    background: url(assets/images/coupon.png) -47px 0;
+}
+
+
+#info {
+    right: 60px;
+    width: 43px;
+    background: url(assets/images/info.png) -91px 0;
+}
+
+#msg_status {
     color: red;
 }
 
@@ -99,7 +113,8 @@ h3.intro {
 </head>
 <body>
   <div id="border">
-    <p class="textCenter" id="login_status">@flash.get("login_status")</p>
+    <p class="textCenter" id="msg_status">@flash.get("login_status")</p>
+     <p class="textCenter" id="msg_status">@flash.get("update_status")</p>
     
     <h1 class="intro">
 		Top
