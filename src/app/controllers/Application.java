@@ -40,7 +40,8 @@ public class Application extends Controller {
     /**
      * doLogin
      * where we validate inputs for login
-     * @param data 
+     * @param data
+     * @param isRegistration
      * @return result of user
      */
     public static Result doLogin(Form<User> data) {
@@ -48,21 +49,21 @@ public class Application extends Controller {
         User user = User.find.byId(potentialUser.email);
 
         /* Check if correct password was supplied. */
-        if (!user.isPassword(potentialUser.password)) {
+        if ( (user == null) || (!user.isPassword(potentialUser.password)) ) {
             flash("login_status", "Invalid username or password specified!");
             return badRequest(login.render(data, Form.form(User.class)));
         }
 
+        /* Clear old session data. */
         session().clear();
+
+        /* Add simple variables here to use in views. */
         session("user_email", user.email);
+        session("user_name", user.name);
 
+        flash("login_status", "Successfully logged in!");
 
-        if ((flash("login_status") == "") || (flash("login_status") == null))
-            flash("login_status", "Successfully logged in!");
-        else
-            flash("login_status", "Successfully registered!");
-
-        return redirect(routes.Application.user());
+        return redirect(routes.Application.index());
     }
 
     /**
@@ -111,9 +112,9 @@ public class Application extends Controller {
         newUser.changePassword(newUser.password);
         newUser.save();
 
+        /* Display success to user, prompt to log in. */
         flash("login_status", "Successfully registered!");
-
-        return doLogin(data);
+        return ok(login.render(data, Form.form(User.class)));
     }
 
     /**
@@ -122,13 +123,15 @@ public class Application extends Controller {
      * @return result
      */
     public static Result updateUser(){
-    	User existingUser = null;
+    	User existingUser = User.find.byId(session().get("user_email"));;
     	 /* Get data from HTML form. */
         Form<User> data = Form.form(User.class).bindFromRequest();
 
         /* Error checking. */
-        if (data.hasErrors())
-            return badRequest(login.render(Form.form(User.class), data));
+        if (data.hasErrors()) {
+            flash("login_status", "Please enter data into all fields in the Update form.");
+            return badRequest(user.render(data));
+        }
 
         /* Get data from form. */
         existingUser = data.get();
@@ -136,8 +139,16 @@ public class Application extends Controller {
         /* Change user password and save to database. */
         existingUser.changePassword(existingUser.password);
         existingUser.changeName(existingUser.name);
-        existingUser.save();
-		return user();
+        existingUser.update((Object)existingUser.email);
+
+        /* Clear old session data. */
+        session().clear();
+
+        /* Add simple variables here to use in views. */
+        session("user_email", existingUser.email);
+        session("user_name", existingUser.name);
+
+		return redirect(routes.Application.user());
     }
 
     /**
@@ -146,7 +157,9 @@ public class Application extends Controller {
      * @return result
      */
     public static Result logout() {
+        /* Clear old session data. */
         session().clear();
+
         return redirect(routes.Application.index());
     }
 
@@ -156,7 +169,19 @@ public class Application extends Controller {
      * @return result
      */
     public static Result user() {
-        return ok(user.render(Form.form(User.class)));
+        User existingUser;
+        Form<User> data;
+
+        /* Check if user is logged in. */
+        if ((session().get("user_email") == null) || (session().get("user_email") == ""))
+            return redirect(routes.Application.index());
+
+        /* Get the existing user info and fill the form. */
+        existingUser = User.find.byId(session().get("user_email"));
+        data = Form.form(User.class).fill(existingUser);
+
+        /* Display it. */
+        return ok(user.render(data));
     }
 
 }

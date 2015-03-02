@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 import javax.persistence.*;
 import play.data.validation.*;
 import play.db.ebean.*;
+import com.avaje.ebean.annotation.*;
 
 import controllers.BCrypt;
 
