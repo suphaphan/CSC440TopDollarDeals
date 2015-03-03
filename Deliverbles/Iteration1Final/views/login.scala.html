@@ -1,0 +1,52 @@
+@(login_form: Form[User], register_form: Form[User])
+
+@before_partial()
+
+@helper.form(routes.Application.authenticate) {
+   <h1 class="title">Login</h1>
+
+   <p class="textCenter">
+       <input type="email" name="email" placeholder="Email" value="@login_form("email").value">
+   </p>
+   <p class="textCenter">
+       <input type="password" name="password" placeholder="Password">
+   </p>
+
+   <p class="textCenter" style="display: none;">
+      <input type="text" name="name" placeholder="Name" value=" ">
+   </p>
+
+   <p class="textCenter" style="display: none;">
+       <input type="text" name="zip" placeholder="Zip" value="0">
+   </p>
+   
+   <p class="textCenter">
+       <button type="submit">Login</button>
+   </p>
+}
+
+@helper.form(routes.Application.register) {
+   <h1 class="title">Register</h1>
+
+   <p class="textCenter">
+      <input type="text" name="name" placeholder="Name" value="@register_form("name").value">
+   </p>
+   <p class="textCenter">
+       <input type="email" name="email" placeholder="Email" value="@register_form("email").value">
+   </p>
+   <p class="textCenter">
+       <input type="password" name="password" placeholder="Password">
+   </p>
+   <p class="textCenter">
+       <input type="text" name="zip" placeholder="Zip" value="@register_form("zip").value">
+   </p>
+   <p class="textCenter">
+       <button type="submit">Register</button>
+   </p>
+}
+
+ 		<p class="textCenter">
+	   		<a href="home"><img class="mgT10" src="assets/images/home.png" alt="home" width="43" height="43"/></a>
+	    </p>
+	   
+@after_partial()
