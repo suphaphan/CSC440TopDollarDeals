@@ -1,0 +1,5 @@
+March 3:
+1. Codes are clean and well-organized, but some "readme" files are necessary to help other people to understand it.
+2. Design documents have some problems. In the class diagrams, you use "users" and "applications" 
+while in the sequence diagrams, you use "users", "applications", and "login". Therefore, you need to care about
+these design documents. I didn't see the "login" in the implementation. 
