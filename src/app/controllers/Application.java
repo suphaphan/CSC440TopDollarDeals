@@ -185,5 +185,24 @@ public class Application extends Controller {
         /* Display it. */
         return ok(user.render(data));
     }
+    
+    /**
+     * addItem
+     * load add item page
+     * @return result
+     */
+    public static Result addItem() {
+        User existingUser;
+        Form<User> data;
+
+        /* Check if user is logged in. */
+        if (!((session().get("user_email") == null) || (session().get("user_email") == "")))
+        {
+        	 return redirect(routes.Application.addItem());
+        }
+
+        /* Display it. */
+        return redirect(routes.Application.index());
+    }
 
 }

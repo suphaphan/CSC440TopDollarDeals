@@ -27,3 +27,6 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 GET    /user                       controllers.Application.user()
 
 POST    /updateUser                controllers.Application.updateUser()
+
+# Add Item
+GET    /addItem                    controllers.Application.addItem()
