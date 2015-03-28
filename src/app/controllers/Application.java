@@ -198,7 +198,7 @@ public class Application extends Controller {
         /* Check if user is logged in. */
         if (!((session().get("user_email") == null) || (session().get("user_email") == "")))
         {
-        	 return redirect(routes.Application.addItem());
+        	 return ok(addItem.render());
         }
 
         /* Display it. */
