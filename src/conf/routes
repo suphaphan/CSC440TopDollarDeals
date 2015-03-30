@@ -26,9 +26,11 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 # User profile page
 GET    /user                       controllers.Application.user()
 
+# Update user profile
 POST    /updateUser                controllers.Application.updateUser()
 
-POST    /deleteUser                controllers.Application.deleteUser()
+# Delete user
+GET    /deleteUser                controllers.Application.deleteUser()
 
 # Add Item
 GET    /addItem                    controllers.Application.addItem()

@@ -160,15 +160,15 @@ public class Application extends Controller {
      */
     public static Result deleteUser(){
     	User existingUser = User.find.byId(session().get("user_email"));;
-    	 /* Get data from HTML form. */
-        Form<User> data = Form.form(User.class).bindFromRequest();
 
-        /* Get data from form. */
-        existingUser = data.get();
+        /* Delete user */
         existingUser.delete();
 
+        /* Clear the user's session info. */
+        session().clear();
+
         /* Display success to user that their profile has been updated. */
-        flash("delete_status", "Successfully Delete!");
+        flash("login_status", "Successfully Delete!");
 		return redirect(routes.Application.index());
     }
 
