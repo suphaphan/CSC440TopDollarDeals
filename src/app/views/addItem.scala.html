@@ -1,21 +1,30 @@
+@(form: Form[Item], isUpdate: Boolean)
 
 @before_partial()
 
 	@if(session.containsKey("user_email")) {
 		@helper.form(routes.Application.newItem) {
-			<h1 class="title">Add Item</h1>
+			@if(!isUpdate) {
+				<h1 class="title">Add Item</h1>
+			} else {
+				<h1 class="title">View Item</h1>
+			}
 
-			<input class="mgT10 mgL10 w350 fltL" placeholder="Item Name" type="text" name="itemName" value ="">
-			<input class="mgT10 mgL10 w350 fltL" placeholder="Item Price" type="text" name="itemPrice" value ="">
-			<input class="mgT10 mgL10 w350 fltL" placeholder="Store Name" type="text" name="storeName" value ="">
-			<input class="mgT10 mgL10 w350 fltL" placeholder="Address Line 1" type="text" name="addressLine1" value ="">
-			<input class="mgT10 mgL10 w350 fltL" placeholder="Address Line 2" type="text" name="addressLine2" value ="">
-			<input class="mgT10 mgL10 w350 fltL" placeholder="City" type="text" name="city" value ="">
-			<input class="mgT10 mgL10 w350 fltL" placeholder="State" type="text" name="state" value ="">
-			<input class="mgT10 mgL10 w350 fltL" placeholder="Zip Code" type="text" name="zipCode" value ="">
+			<input class="mgT10 mgL10 w350 fltL" placeholder="Item Name" type="text" name="itemName" value ="@form("itemName").value">
+			<input class="mgT10 mgL10 w350 fltL" placeholder="Item Price" type="text" name="itemPrice" value ="@form("itemPrice").value">
+			<input class="mgT10 mgL10 w350 fltL" placeholder="Store Name" type="text" name="storeName" value ="@form("storeName").value">
+			<input class="mgT10 mgL10 w350 fltL" placeholder="Address Line 1" type="text" name="storeAddressLine1" value ="@form("storeAddressLine1").value">
+			<input class="mgT10 mgL10 w350 fltL" placeholder="Address Line 2" type="text" name="storeAddressLine2" value ="@form("storeAddressLine2").value">
+			<input class="mgT10 mgL10 w350 fltL" placeholder="City" type="text" name="storeCity" value ="@form("storeCity").value">
+			<input class="mgT10 mgL10 w350 fltL" placeholder="State" type="text" name="storeState" value ="@form("storeState").value">
+			<input class="mgT10 mgL10 w350 fltL" placeholder="Zip Code" type="text" name="storeZip" value ="@form("storeZip").value">
 
 			<p class="textCenter">
-				<button type="submit">Add</button>
+				@if(!isUpdate) {
+					<button type="submit">Add</button>
+				} else {
+					<button type="submit">Update</button>
+				}
 			</p>
 		}
 		
@@ -24,7 +33,7 @@
 			<li id="logout"><a href="logout"></a></li>
 			<li id=""><a href="home"><img class="mgT10" src="assets/images/home.png" alt="home" width="43" height="43"/></a></li>
 			<li id="coupon"><a href="coupon"></a></li>			
-	}
 		</ul>
+	}
 
 @after_partial()

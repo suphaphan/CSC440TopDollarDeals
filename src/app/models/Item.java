@@ -19,28 +19,31 @@ public class Item extends Model {
     
 
     @Id
-    public final Long id;
+    public Long id;
 
     @Constraints.Required
-    public final String itemName;
+    public String itemName;
 
     @Constraints.Required
-    public final Double itemPrice;
+    public Double itemPrice;
     
     @Constraints.Required
-    public final String storeName;
+    public String storeName;
 
     @Constraints.Required
-    public final String storeAddressLine1;
+    public String storeAddressLine1;
 
     @Constraints.Required
-    public final String storeAddressLine2;
+    public String storeAddressLine2;
 
     @Constraints.Required
-    public final String storeCity;
+    public String storeCity;
 
     @Constraints.Required
-    public final Long storeZip; 
+    public String storeState;
+
+    @Constraints.Required
+    public Long storeZip; 
 
     /**
      * Item
@@ -49,7 +52,7 @@ public class Item extends Model {
      * @param price
      */
     public Item(String itemName, Double itemPrice, String storeName, String storeAddressLine1,
-    	String storeAddressLine2, String storeCity, Long storeZip)
+    	String storeAddressLine2, String storeCity, String storeState, Long storeZip)
     {
     	this.itemName = itemName;
     	this.itemPrice = itemPrice;
@@ -57,6 +60,7 @@ public class Item extends Model {
     	this.storeAddressLine1 = storeAddressLine1;
     	this.storeAddressLine2 = storeAddressLine2;
     	this.storeCity = storeCity;
+    	this.storeState = storeState;
     	this.storeZip = storeZip;
     }
 

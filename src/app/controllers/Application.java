@@ -192,17 +192,12 @@ public class Application extends Controller {
      * @return result
      */
     public static Result addItem() {
-        User existingUser;
-        Form<User> data;
-
         /* Check if user is logged in. */
-        if (!((session().get("user_email") == null) || (session().get("user_email") == "")))
-        {
-        	 return ok(addItem.render());
-        }
+        if ((session().get("user_email") == null) || (session().get("user_email") == ""))
+        	 return redirect(routes.Application.index());
 
         /* Display it. */
-        return redirect(routes.Application.index());
+        return ok(addItem.render(Form.form(Item.class), false));
     }
 
     /**
@@ -211,9 +206,25 @@ public class Application extends Controller {
      * @return result
      */
     public static Result newItem() {
-        /* TODO: Put logic here. */
-        return redirect(routes.Application.addItem());
+        Item newItem = null;
+
+        /* Get data from HTML form. */
+        Form<Item> data = Form.form(Item.class).bindFromRequest();
+
+        /* Error checking. */
+        if (data.hasErrors()) {
+            flash("additem_status", "Please enter valid data into all fields.");
+            return badRequest(addItem.render(data, false));
+        }
+
+        /* Get data from form. */
+        newItem = data.get();
+
+        /* Save new item. */
+        newItem.save();
+
+        /* Display success to user, prompt to log in. */
+        flash("additem_status", "Item added to catalog, thank you!");
+        return redirect(routes.Application.index());
     }
-
-
 }
