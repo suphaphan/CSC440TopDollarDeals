@@ -19,16 +19,28 @@ public class Item extends Model {
     
 
     @Id
-    public int itemId;
+    public final Long id;
 
     @Constraints.Required
-    public String itemName;
+    public final String itemName;
+
+    @Constraints.Required
+    public final Double itemPrice;
     
     @Constraints.Required
-    public double itemPrice;
+    public final String storeName;
 
     @Constraints.Required
-    public int storeId;
+    public final String storeAddressLine1;
+
+    @Constraints.Required
+    public final String storeAddressLine2;
+
+    @Constraints.Required
+    public final String storeCity;
+
+    @Constraints.Required
+    public final Long storeZip; 
 
     /**
      * Item
@@ -36,30 +48,18 @@ public class Item extends Model {
      * @param name
      * @param price
      */
-    public Item(String name, double price, String storeName, String storeAdd) 
+    public Item(String itemName, Double itemPrice, String storeName, String storeAddressLine1,
+    	String storeAddressLine2, String storeCity, Long storeZip)
     {
-      Store st = new Store(storeName, storeAdd);
-      this.itemName = name;
-      this.itemPrice = price;
-      this.storeId = st.getStoreId();
+    	this.itemName = itemName;
+    	this.itemPrice = itemPrice;
+    	this.storeName = storeName;
+    	this.storeAddressLine1 = storeAddressLine1;
+    	this.storeAddressLine2 = storeAddressLine2;
+    	this.storeCity = storeCity;
+    	this.storeZip = storeZip;
     }
 
    
-    public static Finder<String,Item> find = new Finder<String,Item>(String.class, Item.class);
-
-    /**
-     * findDuplicate
-     * validate duplicate items
-     * @return msg
-     */
-    public String findDuplicate() {
-    	
-    	// we need to do search/compare name in the database here to see if there is any match.
-      String msg = null;
-     // if ()
-      {
-        msg = "This item is already in the system.";
-      }
-      return msg;
-    }
+    public static Finder<Long,Item> find = new Finder<Long,Item>(Long.class, Item.class);
 }
