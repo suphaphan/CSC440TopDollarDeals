@@ -205,4 +205,15 @@ public class Application extends Controller {
         return redirect(routes.Application.index());
     }
 
+    /**
+     * newItem
+     * create new item in database
+     * @return result
+     */
+    public static Result newItem() {
+        /* TODO: Put logic here. */
+        return redirect(routes.Application.addItem());
+    }
+
+
 }

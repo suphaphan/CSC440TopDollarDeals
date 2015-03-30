@@ -30,3 +30,6 @@ POST    /updateUser                controllers.Application.updateUser()
 
 # Add Item
 GET    /addItem                    controllers.Application.addItem()
+
+# Create new item in database
+POST    /newItem                    controllers.Application.newItem()
