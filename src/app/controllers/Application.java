@@ -225,6 +225,24 @@ public class Application extends Controller {
 
         /* Display success to user, prompt to log in. */
         flash("additem_status", "Item added to catalog, thank you!");
-        return redirect(routes.Application.index());
+        return redirect(routes.Application.viewItem(newItem.id));
+    }
+
+    /**
+     * viewItem
+     * view item info
+     * @return result
+     */
+    public static Result viewItem(Long id) {
+        Form<Item> data;
+        Item existingItem = Item.find.byId(id);
+
+        if (existingItem == null) {
+            flash("additem_status", "That item does not exist!");
+            return redirect(routes.Application.addItem());
+        }
+
+        data = Form.form(Item.class).fill(existingItem);
+        return ok(addItem.render(data, true));
     }
 }
