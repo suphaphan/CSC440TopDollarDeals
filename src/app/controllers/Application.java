@@ -192,6 +192,10 @@ public class Application extends Controller {
      * @return result
      */
     public static Result addItem() {
+        /* If there's an item referrer, remove it. */
+        if (session("item_referrer") != null)
+            session().remove("item_referrer");
+
         /* Check if user is logged in. */
         if ((session().get("user_email") == null) || (session().get("user_email") == ""))
         	 return redirect(routes.Application.index());
@@ -214,17 +218,42 @@ public class Application extends Controller {
         /* Error checking. */
         if (data.hasErrors()) {
             flash("additem_status", "Please enter valid data into all fields.");
-            return badRequest(addItem.render(data, false));
+
+            if (session("item_referrer") == null)
+                return badRequest(addItem.render(data, false));
+            else
+                return badRequest(addItem.render(data, true));
         }
 
         /* Get data from form. */
         newItem = data.get();
 
+        /* If there is an item referrer, delete the reference to the old item, since
+           items are immutable. */
+        if (session("item_referrer") != null) {
+            /* Get value of the item referrer. */
+            Long id = Long.valueOf(session("item_referrer"));
+
+            /* Get the old item. */
+            Item oldItem = Item.find.byId(id);
+
+            /* Delete the old item. */
+            oldItem.delete();
+        }
+
         /* Save new item. */
         newItem.save();
 
-        /* Display success to user, prompt to log in. */
-        flash("additem_status", "Item added to catalog, thank you!");
+        /* Display success to user and redirect to item info page. */
+        if (session("item_referrer") == null) {
+            flash("additem_status", "Item added to catalog, thank you!");
+        } else {
+            flash("additem_status", "Item updated, thank you!");
+
+            /* Unset the item referrer. */
+            session().remove("item_referrer");
+        }
+
         return redirect(routes.Application.viewItem(newItem.id));
     }
 
@@ -235,13 +264,20 @@ public class Application extends Controller {
      */
     public static Result viewItem(Long id) {
         Form<Item> data;
+
+        /* Get item info. */
         Item existingItem = Item.find.byId(id);
 
+        /* Check if the item exists. */
         if (existingItem == null) {
             flash("additem_status", "That item does not exist!");
             return redirect(routes.Application.addItem());
         }
 
+        /* Record the item referrer for updating. */
+        session("item_referrer", String.valueOf(existingItem.id));
+
+        /* Fill in data for view. */
         data = Form.form(Item.class).fill(existingItem);
         return ok(addItem.render(data, true));
     }
