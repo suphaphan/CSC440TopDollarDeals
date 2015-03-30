@@ -1,5 +1,15 @@
 # CSC440TopDollarDeals
 
+## Simple Deployment
+1. Install [Activator](https://typesafe.com/get-started).
+2. Add `activator` to your path.
+3. Open a terminal or console window.
+4. Change the directory to the [tree/master/src](src) directory.
+5. Run `activator run`.
+6. Open a browser.
+7. Navigate to `http://localhost:9000`.
+
+## Advanced Deployment
 Standalone Play applications
 The simplest and the more robust way is to simply run your Play application without any container. You can use a frontal HTTP server like Lighttpd or Apache if you need more advanced HTTP features like virtual hosting.
 
