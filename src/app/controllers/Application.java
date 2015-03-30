@@ -152,6 +152,25 @@ public class Application extends Controller {
         flash("update_status", "Successfully udpated!");
 		return redirect(routes.Application.user());
     }
+    
+    /**
+     * deleteUser
+     * this is called then user hit delete icon
+     * @return result
+     */
+    public static Result deleteUser(){
+    	User existingUser = User.find.byId(session().get("user_email"));;
+    	 /* Get data from HTML form. */
+        Form<User> data = Form.form(User.class).bindFromRequest();
+
+        /* Get data from form. */
+        existingUser = data.get();
+        existingUser.delete();
+
+        /* Display success to user that their profile has been updated. */
+        flash("delete_status", "Successfully Delete!");
+		return redirect(routes.Application.index());
+    }
 
     /**
      * logout

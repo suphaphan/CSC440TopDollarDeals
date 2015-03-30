@@ -28,6 +28,8 @@ GET    /user                       controllers.Application.user()
 
 POST    /updateUser                controllers.Application.updateUser()
 
+POST    /deleteUser                controllers.Application.deleteUser()
+
 # Add Item
 GET    /addItem                    controllers.Application.addItem()
 
