@@ -229,13 +229,7 @@ public class Application extends Controller {
      * @return result
      */
     public static Result deleteItem() {
-    	
-    	 /* Get data from HTML form. */
-        Form<Item> data = Form.form(Item.class).bindFromRequest();
-        Item existingItem = null;
-
-        /* Get data from form. */
-        existingItem = data.get();
+    	Item existingItem = Item.find.byId(Long.valueOf(session("item_referrer")));
         
         /* Delete the old item. */
         existingItem.delete();    
