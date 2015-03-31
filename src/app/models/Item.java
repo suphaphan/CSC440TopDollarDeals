@@ -33,7 +33,6 @@ public class Item extends Model {
     @Constraints.Required
     public String storeAddressLine1;
 
-    @Constraints.Required
     public String storeAddressLine2;
 
     @Constraints.Required

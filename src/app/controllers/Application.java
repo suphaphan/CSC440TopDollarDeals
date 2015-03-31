@@ -224,6 +224,29 @@ public class Application extends Controller {
     }
 
     /**
+     * deleteItem
+     * delete item
+     * @return result
+     */
+    public static Result deleteItem() {
+    	
+    	 /* Get data from HTML form. */
+        Form<Item> data = Form.form(Item.class).bindFromRequest();
+        Item existingItem = null;
+
+        /* Get data from form. */
+        existingItem = data.get();
+        
+        /* Delete the old item. */
+        existingItem.delete();    
+
+        /* Display success to user that their item has been deleted. */
+        flash("additem_status", "Successfully Delete!");
+		return redirect(routes.Application.index());
+    }
+
+    
+    /**
      * newItem
      * create new item in database
      * @return result
