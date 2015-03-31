@@ -1,0 +1,46 @@
+@(form: Form[Item], isUpdate: Boolean)
+
+@before_partial()
+
+	@if(session.containsKey("user_email")) {
+		@helper.form(routes.Application.newItem) {
+			@if(!isUpdate) {
+				<h1 class="title">Add Item</h1>
+			} else {
+				<h1 class="title">View Item</h1>
+			}
+			
+			<p class="textCenter">
+			<input class="mgT10 mgL10 w350 fltL" placeholder="Item Name" type="text" name="itemName" value ="@form("itemName").value">
+			<input class="clrB mgT10 mgL10 w350 fltL" placeholder="Item Price" type="text" name="itemPrice" value ="@form("itemPrice").value">
+			<input class="clrB mgT10 mgL10 w350 fltL" placeholder="Store Name" type="text" name="storeName" value ="@form("storeName").value">
+			<input class="clrB mgT10 mgL10 w350 fltL" placeholder="Address Line 1" type="text" name="storeAddressLine1" value ="@form("storeAddressLine1").value">
+			<input class="clrB mgT10 mgL10 w350 fltL" placeholder="Address Line 2" type="text" name="storeAddressLine2" value ="@form("storeAddressLine2").value">
+			<input class="clrB mgT10 mgL10 w350 fltL" placeholder="City" type="text" name="storeCity" value ="@form("storeCity").value">
+			<input class="clrB mgT10 mgL10 w350 fltL" placeholder="State" type="text" name="storeState" value ="@form("storeState").value">
+			<input class="clrB mgT10 mgL10 w350 fltL" placeholder="Zip Code" type="text" name="storeZip" value ="@form("storeZip").value">
+			</p>
+
+			<p class="textCenter">
+				@if(!isUpdate) {
+					<button type="submit">Add</button>
+				} else {
+					<button type="submit">Update</button>
+				}
+			</p>
+		}
+		
+			<table class="textCenter" width="100%"> 
+	   		<tr>
+	   			<td>
+	   				<a href="home"><img class="mgT10" src="assets/images/home.png" alt="home" width="43" height="43"/></a>	 
+	          	</td>
+	          	<td>
+	       			<a href="deleteItem"><img class="mgT10" src="assets/images/deleteItem.png" alt="home" width="43" height="43"/></a>
+	       		</td>
+	       	</tr>
+	     </table>
+		
+	}
+
+@after_partial()

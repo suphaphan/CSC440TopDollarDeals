@@ -1,0 +1,124 @@
+@()
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#border
+{
+    width: 	400px;
+    padding: 25px;
+    border: 25px solid green;
+    margin: 0 auto;
+}
+#navlist {
+    position: relative;
+}
+#navlist li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    top: 10px;
+}
+#navlist li, #navlist a {
+    height: 44px;
+    display: block;
+}
+
+#login {
+    left: 60px;
+    width: 46px;
+    background: url(assets/images/login.png) 0 0;
+}
+
+#logout {
+    left: 60px;
+    width: 46px;
+    background: url(assets/images/logout.png) 0 0;
+}
+
+#add {
+  left: 185px;
+    width: 43px;
+    background: url(assets/images/add.png) -47px 0;
+}
+
+#update {
+    right: 60px;
+    width: 43px;
+    background: url(assets/images/update.png) -91px 0;
+}
+
+
+#coupon {
+    right: 180px;
+    width: 43px;
+    background: url(assets/images/coupon.png) -47px 0;
+}
+
+
+#info {
+    right: 60px;
+    width: 43px;
+    background: url(assets/images/info.png) -91px 0;
+}
+
+#msg_status {
+    color: red;
+}
+
+h1.intro {
+    color: green;
+    text-align: center;
+}
+
+h1.title {
+    text-align: center;
+}
+
+h3.intro {
+    color: green;
+    text-align: center;
+}
+
+.w350{
+  width:350px;
+}
+
+.fltL{
+  float: left;
+}
+.mgL10{
+  margin-left: 10px;
+}
+.mgT10{
+  margin-top: 10px;
+}
+.mgT30{
+  margin-top: 30px;
+}
+.mgT50{
+  margin-top: 50px;
+}
+.clrB{
+  clear: both;
+  white-space:pre;
+}
+.textCenter{
+     text-align: center;
+}
+</style>
+
+</head>
+<body>
+  <div id="border">
+    <p class="textCenter" id="msg_status">@flash.get("login_status")</p>
+    <p class="textCenter" id="msg_status">@flash.get("update_status")</p>
+    <p class="textCenter" id="msg_status">@flash.get("additem_status")</p>
+    
+    <h1 class="intro">
+		Top
+			<img src="assets/images/shopping-cart-dollar.png" alt="logo" style="width:60px;height:60px">
+		Deals
+	</h1>
