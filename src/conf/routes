@@ -38,5 +38,8 @@ GET    /addItem                    controllers.Application.addItem()
 # Create new item in database
 POST    /newItem                    controllers.Application.newItem()
 
+# Delete item
+GET    /deleteItem                 controllers.Application.deleteItem()
+
 # View item
 GET    /viewItem                    controllers.Application.viewItem(id: Long ?=-1)
