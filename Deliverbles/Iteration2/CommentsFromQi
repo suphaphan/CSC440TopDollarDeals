@@ -1,0 +1,6 @@
+Congratulations! Your project topic is innovative and most groups are like this project. You won 21 out of 24 in the cross-group evaluation system (average 3.5, so your score is my given score * 0.95). In your personal reviews, you two can see the contributions from each other.
+Some comments:
+1.	“add item” use case should include the function of removing the duplicate items (5)
+2.	“remove item” use case should include the function of removing the special items (5)
+3.	“update item” use case should be able to update the times with the item number (5)
+4.	“activity diagram” – end point notation error; “display item” has two options so you can’t use “fork”; and the same errors on the other two places using “fork” (5)
