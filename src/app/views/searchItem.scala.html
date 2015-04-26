@@ -3,22 +3,25 @@
 @before_partial()
 <h1 class="title">Search Results</h1>
 
-<table id="searchResults">
+<table id="searchResults" width="100%">
 	<thead>
 		<tr>
-			<th>Result List</th>
+			<th>Item Name</th>
+			<th>Price</th>
+			<th>Store Info</th>
 		</tr>
 	</thead>
 	<tbody>
 		@for(item <- searchResults) {
 			<tr>
-				<td><a href="viewItem?id=@item.id">@item.itemName</a></td>
+				<td>
+					<a href="viewItem?id=@item.id">@item.itemName</a>
+				</td>
+					
 				<td>@(java.text.NumberFormat.getCurrencyInstance().format(item.itemPrice))</td>
-			</tr>
-			<tr>
-				<td colspan="2">
+				<td>
 					<b>@item.storeName</b> : @(item.storeAddressLine1 + ", " + item.storeAddressLine2)
-					+ ", " + @item.storeCity + ", " + @item.storeState+ ", " + @item.storeZip
+					<br/> @item.storeCity  @item.storeState  @item.storeZip
 				</td>
 			</tr>
 		}
