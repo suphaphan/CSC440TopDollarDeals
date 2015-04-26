@@ -1,5 +1,7 @@
 package controllers;
 
+import java.util.List;
+
 import play.mvc.*;
 import play.data.*;
 
@@ -7,7 +9,7 @@ import views.html.*;
 import models.*;
 
 /**
- * Application 
+ * Application
  * Where all the actions happen
  * @author Group 5
  *
@@ -152,7 +154,7 @@ public class Application extends Controller {
         flash("update_status", "Successfully udpated!");
 		return redirect(routes.Application.user());
     }
-    
+
     /**
      * deleteUser
      * this is called then user hit delete icon
@@ -204,7 +206,7 @@ public class Application extends Controller {
         /* Display it. */
         return ok(user.render(data));
     }
-    
+
     /**
      * addItem
      * load add item page
@@ -229,15 +231,22 @@ public class Application extends Controller {
      * @return result
      */
     public static Result searchItem() {
+    	/* Get form data, form data does not have an associated Model so we use a DynamicForm. */
+    	DynamicForm searchQuery = Form.form().bindFromRequest();
+    	String itemName = searchQuery.get("itemName");
 
-    	//need work here
-    	
+    	/* Check for NULL itemName. */
+    	if (itemName == null)
+    		itemName = "";
+
+    	/* Get our results by searching for items where itemName is a part of their name. */
+    	List<Item> searchResults = Item.find.where().icontains("itemName", itemName).findList();
+
         /* Display it. */
-        //return ok(serachItem.render(Form.form(Item.class), false));
-    	return redirect(routes.Application.index());
+    	return ok(searchItem.render(searchResults));
     }
 
-    
+
     /**
      * deleteItem
      * delete item
@@ -245,16 +254,16 @@ public class Application extends Controller {
      */
     public static Result deleteItem() {
     	Item existingItem = Item.find.byId(Long.valueOf(session("item_referrer")));
-        
+
         /* Delete the old item. */
-        existingItem.delete();    
+        existingItem.delete();
 
         /* Display success to user that their item has been deleted. */
         flash("additem_status", "Successfully Delete!");
 		return redirect(routes.Application.index());
     }
 
-    
+
     /**
      * newItem
      * create new item in database

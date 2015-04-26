@@ -1,0 +1,33 @@
+@(searchResults: List[Item])
+
+@before_partial()
+<h1 class="title">Search Results</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>Item Name</th>
+			<th>Item Price</th>
+			<th>Store Name</th>
+			<th>Store Address</th>
+			<th>Store City</th>
+			<th>Store State</th>
+			<th>Store Zip</th>
+		</tr>
+	</thead>
+	<tbody>
+		@for(item <- searchResults) {
+			<tr>
+				<td>@item.itemName</td>
+				<td>$@item.itemPrice</td>
+				<td>@item.storeName</td>
+				<td>@(item.storeAddressLine1 + ", " + item.storeAddressLine2)</td>
+				<td>@item.storeCity</td>
+				<td>@item.storeState</td>
+				<td>@item.storeZip</td>
+			</tr>
+		}
+	</tbody>
+</table>
+
+@after_partial()

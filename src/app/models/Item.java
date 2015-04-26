@@ -19,7 +19,7 @@ import controllers.BCrypt;
  */
 @Entity
 public class Item extends Model {
-    
+
 
     @Id
     public Long id;
@@ -29,7 +29,7 @@ public class Item extends Model {
 
     @Constraints.Required
     public Double itemPrice;
-    
+
     @Constraints.Required
     public String storeName;
 
@@ -45,7 +45,7 @@ public class Item extends Model {
     public String storeState;
 
     @Constraints.Required
-    public Long storeZip; 
+    public Long storeZip;
 
     /**
      * Item
@@ -66,7 +66,7 @@ public class Item extends Model {
     	this.storeZip = storeZip;
     }
 
-   
+
     public static Finder<Long,Item> find = new Finder<Long,Item>(Long.class, Item.class);
-   
+
 }
