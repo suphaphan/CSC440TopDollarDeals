@@ -2,9 +2,12 @@ package models;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import javax.persistence.*;
+
 import play.data.validation.*;
 import play.db.ebean.*;
+
 import com.avaje.ebean.annotation.*;
 
 import controllers.BCrypt;
@@ -65,4 +68,5 @@ public class Item extends Model {
 
    
     public static Finder<Long,Item> find = new Finder<Long,Item>(Long.class, Item.class);
+   
 }

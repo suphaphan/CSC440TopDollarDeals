@@ -224,6 +224,21 @@ public class Application extends Controller {
     }
 
     /**
+     * searchItem
+     * load item(s) list
+     * @return result
+     */
+    public static Result searchItem() {
+
+    	//need work here
+    	
+        /* Display it. */
+        //return ok(serachItem.render(Form.form(Item.class), false));
+    	return redirect(routes.Application.index());
+    }
+
+    
+    /**
      * deleteItem
      * delete item
      * @return result

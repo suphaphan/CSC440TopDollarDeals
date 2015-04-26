@@ -2,13 +2,15 @@
 @before_partial()
 
 		<input class="mgT10 mgL10 w350 fltL" placeholder="Item Name" type="text" name="itemName" value ="">
-		<img class="mgT10 mgL10 fltL" src="assets/images/search.png" alt="search" width="23" height="23"/>
+		<a href="searchItem"><img class="mgT10 mgL10 fltL" src="assets/images/search.png" alt="search" width="23" height="23"/></a>
 
+		<!--
 		<div class="clrB mgT30">
 			Search By Zipcode
 		</div>
-		<input class="mgT10 mgL10 w350 fltL" placeholder="Zipcode" type="text" name="zipCode" value ="">
+		  <input class="mgT10 mgL10 w350 fltL" placeholder="Zipcode" type="text" name="zipCode" value ="">
 		<img class="mgT10 mgL10 fltL" src="assets/images/search.png" alt="search" width="23" height="23"/>
+		-->
 		
 		<p class="clrB txtCenter">
 			@if(session.containsKey("user_email")){ 

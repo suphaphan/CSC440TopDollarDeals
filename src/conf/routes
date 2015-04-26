@@ -35,6 +35,9 @@ GET    /deleteUser                controllers.Application.deleteUser()
 # Add Item
 GET    /addItem                    controllers.Application.addItem()
 
+# Search item
+GET    /searchItem                 controllers.Application.searchItem()
+
 # Create new item in database
 POST    /newItem                    controllers.Application.newItem()
 
@@ -43,3 +46,4 @@ GET    /deleteItem                 controllers.Application.deleteItem()
 
 # View item
 GET    /viewItem                    controllers.Application.viewItem(id: Long ?=-1)
+
