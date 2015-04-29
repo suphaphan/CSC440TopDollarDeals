@@ -47,3 +47,9 @@ GET    /deleteItem                 controllers.Application.deleteItem()
 # View item
 GET    /viewItem                    controllers.Application.viewItem(id: Long ?=-1)
 
+# Info page
+GET     /info             
+
+# Coupon page
+GET     /coupon             
+

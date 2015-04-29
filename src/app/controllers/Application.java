@@ -24,6 +24,16 @@ public class Application extends Controller {
     public static Result index() {
         return ok(index.render());
     }
+    
+    
+    /**
+	 * info
+	 * default render info page
+	 * @return result
+	 */
+    public static Result info() {
+        return ok();
+    }
 
     /**
      * login
