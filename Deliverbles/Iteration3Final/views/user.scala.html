@@ -1,0 +1,37 @@
+@(user_form: Form[User])
+
+@before_partial()
+
+	@helper.form(routes.Application.updateUser) {
+	   <h1 class="title">User Profile</h1>
+
+	   <p class="textCenter">
+         <input type="text" name="name" placeholder="Name" value="@user_form("name").value">
+       </p>
+       <p class="textCenter">
+           <input type="email" name="email" placeholder="Email" value="@user_form("email").value">
+       </p>
+       <p class="textCenter">
+           <input type="password" name="password" placeholder="Password">
+       </p>
+       <p class="textCenter">
+           <input type="text" name="zip" placeholder="Zip" value="@user_form("zip").value">
+       </p>
+             
+        <p class="textCenter">
+       		<button type="submit">Update</button>
+   		</p>
+	   
+	   	<table class="textCenter" width="100%"> 
+	   		<tr>
+	   			<td>
+	   				<a href="home"><img class="mgT10" src="assets/images/home.png" alt="home" width="43" height="43"/></a>	 
+	          	</td>
+	          	<td>
+	       			<a href="deleteUser"><img class="mgT10" src="assets/images/deleteUser.png" alt="home" width="43" height="43"/></a>
+	       		</td>
+	       	</tr>
+	     </table>
+	}
+
+@after_partial()

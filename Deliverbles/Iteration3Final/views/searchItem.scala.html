@@ -1,0 +1,61 @@
+@(searchResults: List[Item])
+
+@before_partial()
+<h1 class="title">Search Results</h1>
+
+<table id="searchResults" width="100%">
+	<thead>
+		<tr>
+			<th>Item Name</th>
+			<th>Price</th>
+			<th>Store Info</th>
+		</tr>
+	</thead>
+	<tbody>
+		@for(item <- searchResults) {
+			<tr>
+				<td>
+					<a href="viewItem?id=@item.id">@item.itemName</a>
+				</td>
+					
+				<td>@(java.text.NumberFormat.getCurrencyInstance().format(item.itemPrice))</td>
+				<td>
+					<b>@item.storeName</b> : <br/>
+					 @(item.storeAddressLine1 + ", " + item.storeAddressLine2)
+					 <br/>
+					 @item.storeCity  @item.storeState  @item.storeZip
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
+
+		<ul id="navlist" class="clrB mgT30">
+		@if(session.containsKey("user_email")) {
+			<li id="logout"><a href="logout"></a></li>
+			<li id="add"><a href="addItem"></a></li>
+			<li id="home"><a href="home"></a></li>
+		} else {
+			<li id="login"><a href="login"></a></li>
+			<li id="coupon"><a href="coupon"></a></li>
+			<li id="home"><a href="home"></a></li>
+		}
+		</ul>
+
+<link rel="stylesheet" href="https://cdn.rawgit.com/alfajango/jquery-dynatable/v0.3.1/jquery.dynatable.css">
+<style>
+	th a, th a:hover {
+		color: black;
+	}
+</style>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="https://cdn.rawgit.com/alfajango/jquery-dynatable/v0.3.1/jquery.dynatable.js"></script>
+
+<script type="text/javascript">
+	$('#searchResults').dynatable();
+</script>
+
+
+
+@after_partial()
