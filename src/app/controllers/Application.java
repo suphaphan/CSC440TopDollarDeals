@@ -24,15 +24,24 @@ public class Application extends Controller {
     public static Result index() {
         return ok(index.render());
     }
-    
-    
+
+
     /**
 	 * info
 	 * default render info page
 	 * @return result
 	 */
     public static Result info() {
-        return ok();
+        return ok(info.render());
+    }
+
+    /**
+     * coupon
+     * default coupon page
+     * @return result
+     */
+    public static Result coupon() {
+        return ok(coupon.render());
     }
 
     /**

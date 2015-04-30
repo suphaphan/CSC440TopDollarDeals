@@ -48,8 +48,8 @@ GET    /deleteItem                 controllers.Application.deleteItem()
 GET    /viewItem                    controllers.Application.viewItem(id: Long ?=-1)
 
 # Info page
-GET     /info             
+GET     /info                       controllers.Application.info()
 
 # Coupon page
-GET     /coupon             
+GET     /coupon                     controllers.Application.coupon()
 
